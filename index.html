@@ -545,6 +545,17 @@
 </nav>
 
 <!-- MOMENTO 1 -->
+<!-- IDENTIFICAÇÃO DA DUPLA -->
+<section id="identificacao" style="background:var(--roxo); padding:1.5rem 0;">
+  <div class="container">
+    <p style="color:rgba(255,255,255,.7); font-size:.75rem; font-family:Arial,sans-serif; letter-spacing:.1em; text-transform:uppercase; margin-bottom:.5rem;">Antes de começar</p>
+    <label style="color:#fff; font-family:Arial Black,sans-serif; font-size:.85rem; display:block; margin-bottom:.5rem;">NOME DA DUPLA</label>
+    <input type="text" id="nome-dupla" placeholder="Ex: Dupla 3 — Turma 8B"
+      style="width:100%; padding:.7rem 1rem; border-radius:6px; border:none; font-size:1rem; font-family:Georgia,serif; max-width:420px; display:block;">
+    <p style="color:rgba(255,255,255,.6); font-size:.8rem; margin-top:.5rem; font-style:italic;">Esse nome aparecerá nos registros salvos pelo professor.</p>
+  </div>
+</section>
+
 <section id="momento1">
   <div class="container">
     <p class="section-label">Momento 1 · Prática Situada</p>
@@ -566,7 +577,7 @@
         <p><strong>Primeira leitura:</strong> Quem são as personagens desta narrativa? Que impressão você tem delas? A narrativa parece justa com todas as pessoas envolvidas?</p>
       </div>
     </div>
-    <textarea class="registro" placeholder="Registre aqui as primeiras impressões da dupla..."></textarea>
+    <textarea class="registro" placeholder="Registre aqui as primeiras impressões da dupla..." data-momento="Momento 1" data-pergunta="Primeiras impressões das personagens" onblur="salvarComFeedback(this, 'Momento 1', 'Primeiras impressões das personagens')"></textarea>
 
     <div class="pergunta-box" style="margin-top:1rem; background: #2a0a5e;">
       <span class="icone">💬</span>
@@ -574,7 +585,7 @@
         <p>O texto estava sem imagem, sem cor, sem música, sem emoji. <strong>Mesmo assim, ele produziu algum efeito em vocês?</strong> O que perceberam sem nenhum recurso visual?</p>
       </div>
     </div>
-    <textarea class="registro" placeholder="O que o texto verbal puro já comunica — mesmo sem nenhum modo visual?"></textarea>
+    <textarea class="registro" placeholder="O que o texto verbal puro já comunica — mesmo sem nenhum modo visual?" data-momento="Momento 1" data-pergunta="Efeito do texto verbal puro" onblur="salvarComFeedback(this, 'Momento 1', 'Efeito do texto verbal puro')"></textarea>
   </div>
 </section>
 
@@ -708,13 +719,13 @@
         <span class="icone">🔄</span>
         <div><p><strong>Como essa combinação de escolhas alterou a leitura das personagens?</strong> A Ana pareceu mais competente ou menos? O passageiro pareceu mais razoável ou mais preconceituoso?</p></div>
       </div>
-      <textarea class="registro" placeholder="Descrevam como as escolhas modais mudaram a interpretação da dupla..."></textarea>
+      <textarea class="registro" placeholder="Descrevam como as escolhas modais mudaram a interpretação da dupla..." data-momento="Momento 2" data-pergunta="Impacto das escolhas modais na interpretação" onblur="salvarComFeedback(this, 'Momento 2', 'Impacto das escolhas modais na interpretação')"></textarea>
 
       <div class="pergunta-box" style="margin-top:1rem;">
         <span class="icone">🎯</span>
         <div><p><strong>Que modo semiótico teve maior impacto na leitura de vocês?</strong> A imagem? A cor? O título? O emoji? Por quê?</p></div>
       </div>
-      <textarea class="registro" placeholder="Identifiquem o modo com maior poder semiótico nesta versão..."></textarea>
+      <textarea class="registro" placeholder="Identifiquem o modo com maior poder semiótico nesta versão..." data-momento="Momento 2" data-pergunta="Modo com maior poder semiótico" onblur="salvarComFeedback(this, 'Momento 2', 'Modo com maior poder semiótico')"></textarea>
     </div>
   </div>
 </section>
@@ -819,13 +830,13 @@
       <span class="icone">⚖️</span>
       <div><p><strong>Esta versão reproduz o estereótipo ou o questiona?</strong> Após ver o corpus completo, a versão que a outra dupla recebeu parecia denunciar ou naturalizar a violência simbólica?</p></div>
     </div>
-    <textarea class="registro" placeholder="Descrevam como a outra dupla interpretou sua versão — e o que isso revelou sobre as escolhas modais..."></textarea>
+    <textarea class="registro" placeholder="Descrevam como a outra dupla interpretou sua versão — e o que isso revelou sobre as escolhas modais..." data-momento="Momento 3" data-pergunta="Interpretação da outra dupla" onblur="salvarComFeedback(this, 'Momento 3', 'Interpretação da outra dupla')"></textarea>
 
     <div class="pergunta-box" style="margin-top:1rem; background:#1a7a4a;">
       <span class="icone">📊</span>
       <div><p><strong>Os dados do DETRAN-DF e das pilotas contradizem o estereótipo dos memes.</strong> Mas por que os memes continuam circulando e sendo aceitos como humor? Que modo semiótico os memes usam para tornar o preconceito "inofensivo"?</p></div>
     </div>
-    <textarea class="registro" placeholder="Identifiquem os mecanismos semióticos que tornam o estereótipo socialmente aceitável..."></textarea>
+    <textarea class="registro" placeholder="Identifiquem os mecanismos semióticos que tornam o estereótipo socialmente aceitável..." data-momento="Momento 3" data-pergunta="Mecanismos de naturalização do estereótipo" onblur="salvarComFeedback(this, 'Momento 3', 'Mecanismos de naturalização do estereótipo')"></textarea>
   </div>
 </section>
 
@@ -846,9 +857,9 @@
 
     <div class="sintese-area">
       <h3>Mecanismo 1</h3>
-      <textarea placeholder="Descreva o primeiro mecanismo semiótico que identificou nos materiais das camadas 2 ou 3..."></textarea>
+      <textarea placeholder="Descreva o primeiro mecanismo semiótico que identificou nos materiais das camadas 2 ou 3..." data-momento="Momento 4" data-pergunta="Mecanismo semiótico 1" onblur="salvarComFeedback(this, 'Momento 4', 'Mecanismo semiótico 1')"></textarea>
       <h3 style="margin-top:1rem;">Mecanismo 2</h3>
-      <textarea placeholder="Descreva o segundo mecanismo semiótico..."></textarea>
+      <textarea placeholder="Descreva o segundo mecanismo semiótico..." data-momento="Momento 4" data-pergunta="Mecanismo semiótico 2" onblur="salvarComFeedback(this, 'Momento 4', 'Mecanismo semiótico 2')"></textarea>
     </div>
 
     <div class="pergunta-box" style="margin-top:1rem; background:#0c5460;">
@@ -858,7 +869,7 @@
 
     <div class="sintese-area" style="margin-top:0;">
       <h3>"Agora que identifiquei como narrativas de violência simbólica se constroem semioticamente, percebo que..."</h3>
-      <textarea placeholder="Complete com sua reflexão..."></textarea>
+      <textarea placeholder="Complete com sua reflexão..." data-momento="Momento 4" data-pergunta="Síntese pessoal" onblur="salvarComFeedback(this, 'Momento 4', 'Síntese pessoal')"></textarea>
       <button id="btn-finalizar" onclick="finalizar()">Concluir minha análise ✓</button>
     </div>
 
@@ -1046,5 +1057,75 @@ const obs = new IntersectionObserver(entries => {
 }, {threshold: 0.35});
 sections.forEach(s => obs.observe(s));
 </script>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+// ── SUPABASE CONFIG ──
+const SUPA_URL = "https://yfzkcsemzcdjjpbxgxyb.supabase.co";
+const SUPA_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inlmemtjc2VtemNkampwYnhneHliIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI1MTg3MjAsImV4cCI6MjA5ODA5NDcyMH0.b830NSSO9-vzjjANU9n1driUurrPurjCwMZV4aeMRQE";
+const supa = supabase.createClient(SUPA_URL, SUPA_KEY);
+
+function getDupla() {
+  return document.getElementById('nome-dupla')?.value?.trim() || 'Dupla não identificada';
+}
+
+// Salvar resposta ao sair do campo (blur)
+async function salvarResposta(momento, pergunta, resposta) {
+  if (!resposta.trim()) return;
+  try {
+    await supa.from('respostas').insert({
+      dupla: getDupla(),
+      momento,
+      pergunta,
+      resposta
+    });
+  } catch(e) {
+    console.warn('Erro ao salvar:', e);
+  }
+}
+
+// Associar blur a todos os textareas com data-momento e data-pergunta
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('textarea.registro[data-momento]').forEach(ta => {
+    ta.addEventListener('blur', () => {
+      salvarResposta(ta.dataset.momento, ta.dataset.pergunta, ta.value);
+    });
+  });
+  // Síntese final
+  document.querySelectorAll('textarea.sintese-save').forEach(ta => {
+    ta.addEventListener('blur', () => {
+      salvarResposta('Momento 4', ta.dataset.pergunta, ta.value);
+    });
+  });
+});
+
+// Salvar também ao finalizar
+const _finalizar = finalizar;
+window.finalizar = async function() {
+  const tas = document.querySelectorAll('.sintese-area textarea');
+  const perguntas = [
+    'Mecanismo semiótico 1',
+    'Mecanismo semiótico 2',
+    'Síntese pessoal'
+  ];
+  for (let i = 0; i < tas.length; i++) {
+    if (tas[i].value.trim()) {
+      await salvarResposta('Momento 4', perguntas[i] || 'Síntese', tas[i].value);
+    }
+  }
+  _finalizar();
+};
+
+// Notificação visual de salvamento
+async function salvarComFeedback(el, momento, pergunta) {
+  const val = el.value.trim();
+  if (!val) return;
+  el.style.borderColor = '#f5c800';
+  await salvarResposta(momento, pergunta, val);
+  el.style.borderColor = '#1a7a4a';
+  setTimeout(() => { el.style.borderColor = ''; }, 1500);
+}
+</script>
+
 </body>
 </html>
