@@ -92,7 +92,11 @@ textarea.reg:focus{outline:none;border-color:var(--roxo);background:#fff}
 
 /* MODO CARD */
 .mc{background:#fff;border:1.5px solid var(--cinza);border-radius:var(--r);
-  overflow:hidden;margin-bottom:.9rem;box-shadow:var(--sombra)}
+  overflow:hidden;margin-bottom:.9rem;box-shadow:var(--sombra);transition:border-color .2s,box-shadow .2s}
+.mc.mc-falta{border:2px solid var(--vermelho);box-shadow:0 0 0 3px rgba(192,57,43,.15)}
+.mc.mc-falta .mc-h{background:var(--vermelho)}
+.mc-falta-msg{display:none;font-size:.72rem;color:var(--vermelho);font-weight:bold;padding:.4rem 1.1rem 0;font-style:normal}
+.mc.mc-falta .mc-falta-msg{display:block}
 .mc-h{background:var(--preto);color:#fff;padding:.45rem .95rem;
   font-family:'Arial Black',sans-serif;font-size:.68rem;letter-spacing:.08em;text-transform:uppercase}
 .mc-b{padding:.9rem 1.1rem}
@@ -308,7 +312,7 @@ footer strong{color:rgba(255,255,255,.72)}
   <div class="hero">
     <span class="badge">ODA · Ensino Fundamental II · 8º Ano</span>
     <h1>Quando a piada<br><em>não é engraçada</em></h1>
-    <p>Narrativas, modos semióticos e violência simbólica de gênero</p>
+    <p>Narrativas, leitura multissemiótica e violência simbólica de gênero</p>
   </div>
   <div class="cnt" style="max-width:500px">
     <div class="inst" style="margin-top:1.8rem">
@@ -382,7 +386,7 @@ footer strong{color:rgba(255,255,255,.72)}
   </div>
   <div class="cnt">
     <div class="inst">
-      <strong>Para a dupla:</strong> Façam escolhas em cada modo semiótico. O <strong>preview ao vivo</strong> mostra como a notícia se transforma. Quando satisfeitos, cliquem em <strong>Gerar Versão Final</strong>.
+      <strong>Para a dupla:</strong> Façam escolhas em cada recurso de linguagem indicado abaixo. O <strong>preview ao vivo</strong> mostra como a notícia se transforma. Quando satisfeitos, cliquem em <strong>Gerar Versão Final</strong>.
     </div>
 
     <!-- PREVIEW AO VIVO -->
@@ -399,10 +403,11 @@ footer strong{color:rgba(255,255,255,.72)}
     </div>
 
     <!-- TÍTULO -->
-    <div class="mc"><div class="mc-h">✏️ Modo Verbal — Título</div><div class="mc-b">
+    <div class="mc" id="mc-titulo"><div class="mc-h">✏️ Modo Verbal — Título</div><div class="mc-b">
       <p class="dica">O título enquadra toda a leitura antes que o leitor veja qualquer imagem.</p>
+      <p class="mc-falta-msg">⚠️ Escolham uma opção de título.</p>
       <div class="ops">
-        <label><input type="radio" name="titulo" value="A" checked onchange="upv()"> Ana é motorista de aplicativo há dois anos</label>
+        <label><input type="radio" name="titulo" value="A" onchange="upv()"> Ana é motorista de aplicativo há dois anos</label>
         <label><input type="radio" name="titulo" value="B" onchange="upv()"> Mulher ao volante: será que ela consegue?</label>
         <label><input type="radio" name="titulo" value="C" onchange="upv()"> Motorista corajosa enfrenta preconceito no trânsito</label>
         <label><input type="radio" name="titulo" value="D" onchange="upv()"> Dados provam: mulheres dirigem melhor que homens</label>
@@ -410,10 +415,11 @@ footer strong{color:rgba(255,255,255,.72)}
     </div></div>
 
     <!-- TIPOGRAFIA -->
-    <div class="mc"><div class="mc-h">🔤 Modo Tipográfico — Fonte</div><div class="mc-b">
+    <div class="mc" id="mc-fonte"><div class="mc-h">🔤 Modo Tipográfico — Fonte</div><div class="mc-b">
       <p class="dica">A tipografia comunica autoridade, urgência ou informalidade antes mesmo de se ler a palavra.</p>
+      <p class="mc-falta-msg">⚠️ Escolham uma fonte.</p>
       <div class="ops">
-        <label><input type="radio" name="fonte" value="Georgia,serif" checked onchange="upv()"> <span style="font-family:Georgia,serif">Serifada clássica</span></label>
+        <label><input type="radio" name="fonte" value="Georgia,serif" onchange="upv()"> <span style="font-family:Georgia,serif">Serifada clássica</span></label>
         <label><input type="radio" name="fonte" value="Arial,sans-serif" onchange="upv()"> <span style="font-family:Arial,sans-serif">Sans-serif neutra</span></label>
         <label><input type="radio" name="fonte" value="'Arial Black',sans-serif" onchange="upv()"> <span style="font-family:'Arial Black',sans-serif">Bold impactante</span></label>
         <label><input type="radio" name="fonte" value="'Courier New',monospace" onchange="upv()"> <span style="font-family:'Courier New',monospace">Monospace</span></label>
@@ -422,10 +428,11 @@ footer strong{color:rgba(255,255,255,.72)}
     </div></div>
 
     <!-- IMAGEM -->
-    <div class="mc"><div class="mc-h">🖼️ Modo Visual — Imagem</div><div class="mc-b">
+    <div class="mc" id="mc-imagem"><div class="mc-h">🖼️ Modo Visual — Imagem</div><div class="mc-b">
       <p class="dica">A imagem é o primeiro elemento processado — ela antecipa o sentido antes da leitura verbal.</p>
+      <p class="mc-falta-msg">⚠️ Escolham uma opção de imagem (pode ser "Sem imagem").</p>
       <div class="ops">
-        <label><input type="radio" name="imagem" value="none" checked onchange="upv()"> Sem imagem</label>
+        <label><input type="radio" name="imagem" value="none" onchange="upv()"> Sem imagem</label>
         <label><input type="radio" name="imagem" value="meme1" onchange="upv()"> Meme fotográfico (cachorros)</label>
         <label><input type="radio" name="imagem" value="meme2" onchange="upv()"> Tirinha da Turma da Mônica</label>
         <label><input type="radio" name="imagem" value="piloto" onchange="upv()"> Comandante Karina Buchalla</label>
@@ -435,10 +442,11 @@ footer strong{color:rgba(255,255,255,.72)}
     </div></div>
 
     <!-- COR -->
-    <div class="mc"><div class="mc-h">🎨 Modo Cromático — Cor de fundo</div><div class="mc-b">
+    <div class="mc" id="mc-cor"><div class="mc-h">🎨 Modo Cromático — Cor de fundo</div><div class="mc-b">
       <p class="dica">A cor cria atmosfera emocional antes que qualquer palavra seja lida.</p>
+      <p class="mc-falta-msg">⚠️ Escolham uma cor de fundo.</p>
       <div class="ops">
-        <label><input type="radio" name="cor" value="neutro" checked onchange="upv()"> ⬜ Branco neutro</label>
+        <label><input type="radio" name="cor" value="neutro" onchange="upv()"> ⬜ Branco neutro</label>
         <label><input type="radio" name="cor" value="roxo" onchange="upv()"> 🟣 Roxo</label>
         <label><input type="radio" name="cor" value="vermelho" onchange="upv()"> 🔴 Vermelho</label>
         <label><input type="radio" name="cor" value="verde" onchange="upv()"> 🟢 Verde</label>
@@ -447,20 +455,22 @@ footer strong{color:rgba(255,255,255,.72)}
     </div></div>
 
     <!-- LAYOUT -->
-    <div class="mc"><div class="mc-h">📐 Modo Espacial — Layout</div><div class="mc-b">
+    <div class="mc" id="mc-layout"><div class="mc-h">📐 Modo Espacial — Layout</div><div class="mc-b">
       <p class="dica">A disposição cria hierarquias de leitura: o que aparece primeiro parece mais importante.</p>
+      <p class="mc-falta-msg">⚠️ Escolham um layout.</p>
       <div class="ops">
-        <label><input type="radio" name="layout" value="normal" checked onchange="upv()"> Título → Imagem → Texto</label>
+        <label><input type="radio" name="layout" value="normal" onchange="upv()"> Título → Imagem → Texto</label>
         <label><input type="radio" name="layout" value="imgcima" onchange="upv()"> Imagem acima do título</label>
         <label><input type="radio" name="layout" value="central" onchange="upv()"> Texto centralizado</label>
       </div>
     </div></div>
 
     <!-- LEGENDA -->
-    <div class="mc"><div class="mc-h">📝 Modo Verbal — Legenda</div><div class="mc-b">
+    <div class="mc" id="mc-legenda"><div class="mc-h">📝 Modo Verbal — Legenda</div><div class="mc-b">
       <p class="dica">A legenda recontextualiza a imagem: pode confirmar, contradizer ou ironizar.</p>
+      <p class="mc-falta-msg">⚠️ Escolham uma opção de legenda (pode ser "Sem legenda").</p>
       <div class="ops">
-        <label><input type="radio" name="legenda" value="none" checked onchange="upv()"> Sem legenda</label>
+        <label><input type="radio" name="legenda" value="none" onchange="upv()"> Sem legenda</label>
         <label><input type="radio" name="legenda" value="A" onchange="upv()"> "Mulher ao volante: risco constante"</label>
         <label><input type="radio" name="legenda" value="B" onchange="upv()"> "Menos de 9% dos acidentes fatais"</label>
         <label><input type="radio" name="legenda" value="C" onchange="upv()"> "Primeira a comandar o maior avião do mundo"</label>
@@ -482,10 +492,11 @@ footer strong{color:rgba(255,255,255,.72)}
     </div></div>
 
     <!-- SOM -->
-    <div class="mc"><div class="mc-h">🔊 Modo Sonoro — Atmosfera</div><div class="mc-b">
+    <div class="mc" id="mc-som"><div class="mc-h">🔊 Modo Sonoro — Atmosfera</div><div class="mc-b">
       <p class="dica">O som cria uma camada emocional que o leitor nem sempre percebe conscientemente.</p>
+      <p class="mc-falta-msg">⚠️ Escolham uma opção de som (pode ser "Silêncio intencional").</p>
       <div class="ops" style="flex-direction:column;align-items:flex-start;gap:.35rem">
-        <label><input type="radio" name="som" value="none" checked onchange="stopSom();upv()"> 🔇 Silêncio intencional</label>
+        <label><input type="radio" name="som" value="none" onchange="stopSom();upv()"> 🔇 Silêncio intencional</label>
         <div style="display:flex;align-items:center;gap:.5rem">
           <label><input type="radio" name="som" value="humor" onchange="upv()"> 🎵 Música cômica</label>
           <button class="som-btn" onclick="playSom('humor')">▶ Ouvir</button>
@@ -539,37 +550,50 @@ footer strong{color:rgba(255,255,255,.72)}
   <div class="hero">
     <span class="badge">Momento 3 · Enquadramento Crítico</span>
     <h1>A troca e o <em>confronto</em></h1>
-    <p>Comparem versões. O que as escolhas modais revelaram?</p>
+    <p>Comparem versões. O que as escolhas de linguagem revelaram?</p>
   </div>
   <div class="cnt">
     <div class="inst">
-      <strong>Para a dupla:</strong> Abaixo está a versão de vocês ao lado de outra versão da turma. Observem as diferenças e respondam.
+      <strong>Para a dupla:</strong> Escolham, na lista abaixo, a versão de outra dupla já publicada para comparar com a de vocês. A lista é atualizada com o que já foi publicado até agora — se a dupla que vocês querem ainda não aparece, toquem em "Atualizar lista".
     </div>
-    <div class="comp">
+
+    <div id="sel-dupla-wrap" style="background:#fff;border:1.5px solid var(--cinza);border-radius:var(--r);padding:1rem 1.1rem;margin:1.1rem 0;box-shadow:var(--sombra)">
+      <label style="font-family:'Arial Black',sans-serif;font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;display:block;margin-bottom:.5rem">Escolham a dupla para comparar</label>
+      <div style="display:flex;gap:.5rem;flex-wrap:wrap;align-items:stretch">
+        <select id="sel-outra-dupla" onchange="document.getElementById('btn-comparar').disabled=!this.value" style="flex:1;min-width:180px;padding:.6rem .8rem;border-radius:6px;border:2px solid var(--roxo-c);font-family:Georgia,serif;font-size:.9rem;background:#fff">
+          <option value="">Carregando duplas publicadas...</option>
+        </select>
+        <button class="btn-sec" onclick="atualizarListaDuplas()" style="margin-top:0;white-space:nowrap">🔄 Atualizar lista</button>
+      </div>
+      <p id="sel-dupla-msg" style="font-size:.76rem;color:#888;font-style:italic;margin-top:.55rem"></p>
+      <button class="btn" id="btn-comparar" onclick="compararComDupla()" disabled>Comparar com esta dupla ▶</button>
+    </div>
+
+    <div class="comp" id="comp-grid" style="display:none">
       <div class="comp-c">
         <div class="comp-h nossa">Nossa versão</div>
         <img class="comp-img" id="cn-img" src="" alt="">
         <div class="comp-b" id="cn-txt"></div>
       </div>
       <div class="comp-c">
-        <div class="comp-h deles">Versão de outra dupla</div>
+        <div class="comp-h deles" id="comp-h-deles">Versão da dupla selecionada</div>
         <img class="comp-img" id="cd-img" src="" alt="">
-        <div class="comp-b" id="cd-txt"><span class="sp"></span> Carregando...</div>
+        <div class="comp-b" id="cd-txt"></div>
       </div>
     </div>
 
     <div class="pq" style="margin-top:1.3rem">
       <span class="ic">⚖️</span>
-      <div><p><strong>Comparando as duas versões:</strong> qual se aproxima mais de narrativas negacionistas? Que escolhas modais produziram esse efeito?</p></div>
+      <div><p><strong>Comparando as duas versões:</strong> qual se aproxima mais de narrativas negacionistas? Que escolhas de linguagem produziram esse efeito?</p></div>
     </div>
     <textarea class="reg" id="r3a" placeholder="Descrevam as diferenças e o que elas revelam..." onblur="salvar('Momento 3','Comparação das versões',this)" oninput="chk4()"></textarea>
     <div class="pq" style="margin-top:.7rem;background:#1a7a4a">
       <span class="ic">📊</span>
-      <div><p>Os dados do DETRAN-DF e as histórias das pilotas contradizem o estereótipo dos memes. <strong>Por que, mesmo assim, os memes continuam circulando como humor?</strong> Que modo semiótico os torna aceitáveis?</p></div>
+      <div><p>Os dados do DETRAN-DF e as histórias das pilotas contradizem o estereótipo dos memes. <strong>Por que, mesmo assim, os memes continuam circulando como humor?</strong> Que recurso de linguagem (imagem, legenda, humor visual) torna isso aceitável?</p></div>
     </div>
-    <textarea class="reg" id="r3b" placeholder="Identifiquem os mecanismos semióticos de naturalização..." onblur="salvar('Momento 3','Mecanismos de naturalização',this)" oninput="chk4()"></textarea>
+    <textarea class="reg" id="r3b" placeholder="Identifiquem os recursos de linguagem que naturalizam esse humor..." onblur="salvar('Momento 3','Recursos de naturalização',this)" oninput="chk4()"></textarea>
     <button class="btn" id="btn4" onclick="ir(5)" disabled>Avançar para a síntese ▶</button>
-    <p style="font-size:.75rem;color:#aaa;text-align:center;margin-top:.35rem;font-style:italic">Preencha os campos acima para avançar.</p>
+    <p style="font-size:.75rem;color:#aaa;text-align:center;margin-top:.35rem;font-style:italic">Escolham uma dupla para comparar e preencham os campos acima para avançar.</p>
   </div>
 </div>
 
@@ -584,9 +608,9 @@ footer strong{color:rgba(255,255,255,.72)}
   </div>
   <div class="cnt">
     <div class="inst">
-      <strong>Individual:</strong> Identifique pelo menos dois mecanismos semióticos que operam nos materiais das camadas 2 e 3 para <strong>contestar</strong> o estereótipo. Depois complete a síntese pessoal.
+      <strong>Individual:</strong> Identifiquem, nos materiais das camadas 2 e 3, pelo menos duas escolhas de linguagem (imagem, cor, tipografia, título ou legenda) que <strong>contestam</strong> o estereótipo. Depois completem a síntese pessoal.
     </div>
-    <p style="font-size:.8rem;color:#555;margin:.9rem 0 .2rem">Estes são os materiais que fundamentam as escolhas que vocês fizeram na Tela 2. Observem como cada um mobiliza os modos semióticos (imagem, cor, tipografia, legenda) para reforçar ou contestar o estereótipo. <strong>Toque em qualquer imagem para ampliar.</strong></p>
+    <p style="font-size:.8rem;color:#555;margin:.9rem 0 .2rem">Estes são os materiais que fundamentam as escolhas que vocês fizeram na Tela 2. Observem como cada um mobiliza diferentes recursos de linguagem (imagem, cor, tipografia, legenda) para reforçar ou contestar o estereótipo. <strong>Toque em qualquer imagem para ampliar.</strong></p>
     <!-- CORPUS -->
     <p style="font-family:'Arial Black',sans-serif;font-size:.63rem;letter-spacing:.12em;text-transform:uppercase;color:var(--roxo);margin:1.3rem 0 .5rem">Corpus completo do ODA</p>
     <div style="font-size:.72rem;font-family:'Arial Black',sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--vermelho);margin:.35rem 0">Camada 1 — Estereótipo</div>
@@ -616,24 +640,24 @@ footer strong{color:rgba(255,255,255,.72)}
       <div><p>Nos materiais das camadas 2 e 3, que escolhas de imagem, cor, tipografia ou título foram feitas para <strong>desconstruir</strong> o estereótipo?</p></div>
     </div>
     <div class="sint">
-      <h3>Mecanismo 1</h3>
-      <textarea id="s1" oninput="salvarEstadoLocal()" placeholder="Descreva o primeiro mecanismo semiótico identificado..." onblur="salvar('Momento 4','Mecanismo semiótico 1',this)"></textarea>
-      <h3 style="margin-top:.9rem">Mecanismo 2</h3>
-      <textarea id="s2" oninput="salvarEstadoLocal()" placeholder="Descreva o segundo mecanismo semiótico..." onblur="salvar('Momento 4','Mecanismo semiótico 2',this)"></textarea>
+      <h3>Escolha de linguagem 1</h3>
+      <textarea id="s1" oninput="salvarEstadoLocal()" placeholder="Descreva a primeira escolha de linguagem identificada..." onblur="salvar('Momento 4','Escolha de linguagem 1',this)"></textarea>
+      <h3 style="margin-top:.9rem">Escolha de linguagem 2</h3>
+      <textarea id="s2" oninput="salvarEstadoLocal()" placeholder="Descreva a segunda escolha de linguagem..." onblur="salvar('Momento 4','Escolha de linguagem 2',this)"></textarea>
     </div>
     <div class="pq" style="background:#0c5460">
       <span class="ic">✍️</span>
       <div><p><strong>Complete a frase com suas próprias palavras:</strong></p></div>
     </div>
     <div class="sint" style="margin-top:0">
-      <h3>"Agora que identifiquei como narrativas de violência simbólica se constroem semioticamente, percebo que..."</h3>
+      <h3>"Agora que identifiquei como escolhas de linguagem constroem narrativas de violência simbólica, percebo que..."</h3>
       <textarea id="s3" oninput="salvarEstadoLocal()" placeholder="Complete com sua reflexão pessoal..." onblur="salvar('Momento 4','Síntese pessoal',this)"></textarea>
       <button class="btn" onclick="finalizar()" style="background:var(--amarelo);color:var(--preto);margin-top:.9rem">Concluir minha análise ✓</button>
     </div>
     <div id="msg-fim">
       <h2>Parabéns por chegar até aqui.</h2>
       <p>Você percebeu algo importante: <strong>a violência simbólica não grita — ela faz rir.</strong> Ela usa imagens familiares e a aparência de brincadeira para tornar o preconceito invisível e difícil de contestar.</p>
-      <p style="margin-top:.7rem">Agora que você sabe nomear os mecanismos, você não os verá da mesma forma. <strong>Nomear é o primeiro ato de resistência.</strong></p>
+      <p style="margin-top:.7rem">Agora que você sabe nomear essas escolhas de linguagem, você não as verá da mesma forma. <strong>Nomear é o primeiro ato de resistência.</strong></p>
       <p style="margin-top:.9rem;font-size:.78rem;opacity:.6">ODA · Amanda Vieira, Cátia Sparenberger, Jaqueline Koller, Mariele Ribeiro, Tatiana Bueno e Vanilson Cardoso · Unijuí, 2026</p>
     </div>
   </div>
@@ -750,7 +774,7 @@ const LEGS = {
 };
 const ALERTAS = [
   {t:'B',i:'meme1',x:"⚠️ Título que questiona a competência feminina + imagem estereotipada: padrão clássico de narrativas negacionistas — o preconceito é apresentado como questão legítima."},
-  {t:'B',i:'meme2',x:"⚠️ Título dubitativo + personagem infantil icônico: a familiaridade cultural da Turma da Mônica torna o preconceito 'aceitável'. Esse é um dos mecanismos da violência simbólica."},
+  {t:'B',i:'meme2',x:"⚠️ Título dubitativo + personagem infantil icônico: a familiaridade cultural da Turma da Mônica torna o preconceito 'aceitável'. Essa é uma das formas que a violência simbólica usa para parecer natural."},
   {s:'humor',i:'meme1',x:"⚠️ Música cômica + imagem estereotipada: quando o preconceito ri de si mesmo, torna-se difícil contestá-lo sem parecer sem senso de humor."},
   {i:'piloto',c:'verde',x:"✅ Imagem de ruptura + cor de confiança: esta combinação reposiciona o sujeito feminino como competente e protagonista."},
   {e:'🐕',i:'meme1',x:"⚠️ Emoji de cachorro + meme dos cachorros: redundância entre modos reforça a desumanização e dificulta a contestação."},
@@ -800,7 +824,7 @@ function chk1() {
 function chk4() {
   const a=document.getElementById('r3a').value.trim();
   const b=document.getElementById('r3b').value.trim();
-  document.getElementById('btn4').disabled=!(a&&b);
+  document.getElementById('btn4').disabled=!(a&&b&&duplaComparada);
   salvarEstadoLocal();
 }
 
@@ -809,6 +833,7 @@ function gv(n){return document.querySelector('input[name='+n+']:checked')?.value
 
 // ── PREVIEW AO VIVO ──
 function upv() {
+  document.querySelectorAll('.mc.mc-falta').forEach(el=>el.classList.remove('mc-falta'));
   const tit=gv('titulo')||'A', font=gv('fonte')||'Georgia,serif';
   const img=gv('imagem')||'none', cor=gv('cor')||'neutro';
   const leg=gv('legenda')||'none', lay=gv('layout')||'normal';
@@ -926,11 +951,34 @@ function montarVersaoFinal() {
   vpub={dupla,titulo:TITS[tit],subtitulo:SUBS[tit],imagem:img,cor,legenda:LEGS[leg],emojis:em,som,fonte:font,bg:c.bg,txt:c.txt};
 }
 function gerarVF() {
+  const REQ = [
+    ['titulo','Título','mc-titulo'],
+    ['fonte','Fonte','mc-fonte'],
+    ['imagem','Imagem','mc-imagem'],
+    ['cor','Cor de fundo','mc-cor'],
+    ['layout','Layout','mc-layout'],
+    ['legenda','Legenda','mc-legenda'],
+    ['som','Som','mc-som']
+  ];
+  const faltando = REQ.filter(([n]) => !gv(n));
+  if(faltando.length){
+    faltando.forEach(([,,id])=>{
+      const el=document.getElementById(id);
+      if(el) el.classList.add('mc-falta');
+    });
+    const primeiro=document.getElementById(faltando[0][2]);
+    if(primeiro) primeiro.scrollIntoView({behavior:'smooth',block:'center'});
+    alert('Antes de gerar a versão final, escolham uma opção em cada recurso de linguagem.\n\nFaltam: '+faltando.map(f=>f[1]).join(', ')+'.');
+    return;
+  }
   montarVersaoFinal();
   ir(3);
 }
 
-// ── PUBLICAR E IR PARA TELA 4 ──
+// ── PUBLICAR E CARREGAR LISTA DE DUPLAS ──
+let outrasDuplas = [];     // cache da última busca no Supabase
+let duplaComparada = '';   // nome da dupla escolhida para comparação
+
 async function publicarEAtualizarComparador() {
   if(!vpub) return;
   const btn=document.getElementById('btn3t');
@@ -943,38 +991,89 @@ async function publicarEAtualizarComparador() {
     },{onConflict:'dupla'});
   }catch(e){console.warn(e);}
 
-  // Preencher comparador — lado esquerdo
+  // Preencher "Nossa versão" (lado esquerdo, sempre visível)
   document.getElementById('cn-txt').innerHTML=
     '<strong>'+vpub.titulo+'</strong><br><em>'+vpub.subtitulo+'</em><br><br>'+
     (vpub.emojis?vpub.emojis+'<br>':'')+(vpub.legenda?'<small>'+vpub.legenda+'</small>':'');
-  if(vpub.imagem!=='none'&&IMGS[vpub.imagem]){
-    const ci=document.getElementById('cn-img');ci.src=IMGS[vpub.imagem];ci.style.display='block';
-  }
-
-  // Buscar outra dupla
-  try{
-    const {data}=await SUPA.from('versoes').select('*').neq('dupla',dupla).limit(20);
-    const outros=(data||[]).filter(v=>v.dupla!==dupla);
-    if(outros.length){
-      const o=outros[Math.floor(Math.random()*outros.length)];
-      document.getElementById('cd-txt').innerHTML=
-        '<strong>'+o.titulo+'</strong><br><em>'+(o.subtitulo||'')+'</em><br><br>'+
-        (o.emojis?o.emojis+'<br>':'')+(o.legenda?'<small>'+o.legenda+'</small>':'')+
-        '<br><small style="color:#888">Dupla: '+o.dupla+'</small>';
-      if(o.imagem&&o.imagem!=='none'&&IMGS[o.imagem]){
-        const di=document.getElementById('cd-img');di.src=IMGS[o.imagem];di.style.display='block';
-      }
-    } else {
-      document.getElementById('cd-txt').innerHTML='<em style="color:#aaa">Nenhuma outra dupla publicou ainda. Aguardem ou prossigam.</em>';
-    }
-  }catch(e){document.getElementById('cd-txt').innerHTML='<em style="color:#aaa">Não foi possível carregar. Continuem com a análise.</em>';}
+  const ci=document.getElementById('cn-img');
+  if(vpub.imagem!=='none'&&IMGS[vpub.imagem]){ci.src=IMGS[vpub.imagem];ci.style.display='block';}
+  else{ci.style.display='none';}
 
   if(btn) btn.innerHTML='Publicar versão e avançar para a troca ▶';
+
+  await atualizarListaDuplas();
+  // se já havia uma dupla escolhida (ex: restauração após F5), recarrega a comparação
+  if(duplaComparada){
+    const sel=document.getElementById('sel-outra-dupla');
+    if(sel && [...sel.options].some(o=>o.value===duplaComparada)){
+      sel.value=duplaComparada;
+      compararComDupla(true);
+    }
+  }
 }
+
+// ── BUSCAR, EM TEMPO REAL, QUAIS DUPLAS JÁ PUBLICARAM ──
+async function atualizarListaDuplas(){
+  const sel=document.getElementById('sel-outra-dupla');
+  const msg=document.getElementById('sel-dupla-msg');
+  const btnComp=document.getElementById('btn-comparar');
+  const valorAtual = sel ? sel.value : '';
+  if(sel) sel.innerHTML='<option value="">Buscando duplas publicadas...</option>';
+  if(msg) msg.textContent='';
+  try{
+    const {data,error}=await SUPA.from('versoes').select('*').neq('dupla',dupla).order('created_at',{ascending:false}).limit(60);
+    if(error) throw error;
+    outrasDuplas = data||[];
+    if(!sel) return;
+    if(!outrasDuplas.length){
+      sel.innerHTML='<option value="">Nenhuma dupla publicou ainda</option>';
+      if(msg) msg.textContent='Ainda não há outra dupla publicada. Toquem em "Atualizar lista" daqui a pouco.';
+      if(btnComp) btnComp.disabled=true;
+      return;
+    }
+    sel.innerHTML='<option value="">Selecione uma dupla...</option>'+
+      outrasDuplas.map(o=>`<option value="${o.dupla}">${o.dupla} — ${o.titulo||''}</option>`).join('');
+    if(msg) msg.textContent=outrasDuplas.length+' dupla(s) já publicaram até agora.';
+    if(valorAtual && [...sel.options].some(o=>o.value===valorAtual)){
+      sel.value=valorAtual;
+      if(btnComp) btnComp.disabled=false;
+    }
+  }catch(e){
+    if(sel) sel.innerHTML='<option value="">Não foi possível carregar</option>';
+    if(msg) msg.textContent='Não foi possível buscar as duplas agora. Toquem em "Atualizar lista" para tentar de novo.';
+    if(btnComp) btnComp.disabled=true;
+  }
+}
+
+// ── PREENCHER O COMPARADOR COM A DUPLA ESCOLHIDA ──
+function compararComDupla(silencioso){
+  const sel=document.getElementById('sel-outra-dupla');
+  const nomeEscolhido = sel ? sel.value : '';
+  if(!nomeEscolhido){ if(!silencioso) alert('Escolham uma dupla na lista antes de comparar.'); return; }
+  const o = outrasDuplas.find(v=>v.dupla===nomeEscolhido);
+  if(!o){ if(!silencioso) alert('Essa dupla não está mais na lista. Toquem em "Atualizar lista".'); return; }
+
+  duplaComparada = nomeEscolhido;
+  salvarEstadoLocal();
+
+  document.getElementById('comp-h-deles').textContent='Versão de: '+o.dupla;
+  document.getElementById('cd-txt').innerHTML=
+    '<strong>'+(o.titulo||'')+'</strong><br><em>'+(o.subtitulo||'')+'</em><br><br>'+
+    (o.emojis?o.emojis+'<br>':'')+(o.legenda?'<small>'+o.legenda+'</small>':'');
+  const di=document.getElementById('cd-img');
+  if(o.imagem&&o.imagem!=='none'&&IMGS[o.imagem]){di.src=IMGS[o.imagem];di.style.display='block';}
+  else{di.style.display='none';}
+
+  document.getElementById('comp-grid').style.display='grid';
+  if(!silencioso) document.getElementById('comp-grid').scrollIntoView({behavior:'smooth',block:'start'});
+  chk4();
+}
+
 async function publicarEIr4() {
   await publicarEAtualizarComparador();
   ir(4);
 }
+
 
 // ── SALVAR RESPOSTAS ──
 async function salvar(momento,pergunta,el) {
@@ -990,7 +1089,7 @@ async function salvar(momento,pergunta,el) {
 
 // ── FINALIZAR ──
 async function finalizar() {
-  const campos=[['s1','Mecanismo semiótico 1'],['s2','Mecanismo semiótico 2'],['s3','Síntese pessoal']];
+  const campos=[['s1','Escolha de linguagem 1'],['s2','Escolha de linguagem 2'],['s3','Síntese pessoal']];
   for(const [id,p] of campos){const el=document.getElementById(id);if(el?.value.trim())await salvar('Momento 4',p,el);}
   stopSom();
   document.getElementById('msg-fim').classList.add('vis');
@@ -1009,7 +1108,7 @@ function verificarSenha(){
 // ── PERSISTÊNCIA LOCAL (sobrevive a F5 / fechar aba) ──
 function salvarEstadoLocal(){
   try{
-    const estado = {dupla, turma: turmaSel, nomes: nomesDupla, tela: TELA_ATUAL};
+    const estado = {dupla, turma: turmaSel, nomes: nomesDupla, tela: TELA_ATUAL, duplaComparada};
     CAMPO_RADIOS.forEach(n=>{ estado[n]=gv(n); });
     CAMPO_CHECKS.forEach(id=>{ const el=document.getElementById(id); if(el) estado[id]=el.checked; });
     CAMPO_TEXTOS.forEach(id=>{ const el=document.getElementById(id); if(el) estado[id]=el.value; });
@@ -1032,6 +1131,7 @@ async function restaurarEstadoLocal(){
     const inpT = document.getElementById('turma-select');
     if(inpT) inpT.value = turmaSel;
   }
+  duplaComparada = raw.duplaComparada || '';
   CAMPO_RADIOS.forEach(n=>{
     if(raw[n]){
       const el = document.querySelector('input[name='+n+'][value="'+CSS.escape(raw[n])+'"]');
