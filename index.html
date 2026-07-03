@@ -334,6 +334,7 @@ footer strong{color:rgba(255,255,255,.72)}
       <div id="menu-nav"></div>
     </div>
     <div class="mp-sec" style="border-bottom:none">
+      <button class="mp-restart" onclick="fecharMenu();sairDoApp();" style="color:var(--preto)">Sair (logoff)</button>
       <button class="mp-restart" onclick="fecharMenu();recomecarDoZero();">Recomeçar do zero</button>
     </div>
   </div>
@@ -644,7 +645,7 @@ footer strong{color:rgba(255,255,255,.72)}
     </div>
     <textarea class="reg" id="r3b" placeholder="Identifiquem os recursos de linguagem que naturalizam esse humor..." onblur="salvar('Momento 3','Recursos de naturalização',this)" oninput="chk4()"></textarea>
     <button class="btn" id="btn4" onclick="ir(5)" disabled>Avançar para a síntese ▶</button>
-    <p style="font-size:.75rem;color:#aaa;text-align:center;margin-top:.35rem;font-style:italic">Escolham uma dupla para comparar e preencham os campos acima para avançar.</p>
+    <p style="font-size:.85rem;color:var(--roxo);text-align:center;margin-top:.6rem;font-weight:bold">Escolham uma dupla para comparar e preencham os campos acima para avançar.</p>
   </div>
 </div>
 
@@ -1233,6 +1234,12 @@ async function restaurarEstadoLocal(){
   if(raw.tela >= 3) montarVersaoFinal();
   if(raw.tela >= 4) await publicarEAtualizarComparador();
   if(raw.tela >= 1) ir(raw.tela);
+}
+
+function sairDoApp(){
+  if(!confirm('Sair vai limpar o nome da dupla e o progresso salvo neste navegador, para que outra dupla possa usar este aparelho. As respostas já enviadas ao professor não são perdidas. Deseja sair?')) return;
+  try{ localStorage.removeItem(CHAVE_LOCAL); }catch(e){}
+  location.reload();
 }
 
 function recomecarDoZero(){
