@@ -1092,8 +1092,9 @@ async function atualizarListaDuplas(){
     }
   }catch(e){
     console.warn('Erro ao buscar duplas publicadas:', e);
+    const detalhe = (e && (e.message||e.error_description||e.hint||e.details)) || JSON.stringify(e);
     if(sel) sel.innerHTML='<option value="">Não foi possível carregar</option>';
-    if(msg) msg.textContent='Não foi possível buscar as duplas agora. Toquem em "Atualizar lista" para tentar de novo.';
+    if(msg) msg.innerHTML='Não foi possível buscar as duplas agora. Toquem em "Atualizar lista" para tentar de novo.<br><span style="color:var(--vermelho);font-style:normal;font-family:monospace;font-size:.68rem;word-break:break-word">DETALHE TÉCNICO: '+detalhe+'</span>';
     if(btnComp) btnComp.disabled=true;
   }
 }
