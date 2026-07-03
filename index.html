@@ -251,6 +251,33 @@ textarea.reg:focus{outline:none;border-color:var(--roxo);background:#fff}
 #modal-erro{color:var(--vermelho);font-size:.82rem;margin-bottom:.5rem;min-height:1.2rem}
 #modal-box .btn{margin-top:.3rem}
 
+/* MENU HAMBURGER */
+.btn-menu{background:transparent;border:none;color:#fff;font-size:1.3rem;line-height:1;
+  padding:.3rem .5rem;cursor:pointer}
+#menu-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:600}
+#menu-overlay.vis{display:block}
+#menu-panel{position:fixed;top:0;left:0;bottom:0;width:82%;max-width:320px;background:#fff;
+  z-index:601;transform:translateX(-100%);transition:transform .25s ease;overflow-y:auto;
+  box-shadow:4px 0 20px rgba(0,0,0,.25)}
+#menu-overlay.vis #menu-panel{transform:translateX(0)}
+#menu-panel .mp-head{background:var(--preto);color:#fff;padding:1.1rem 1.2rem}
+#menu-panel .mp-head h2{font-family:'Arial Black',sans-serif;font-size:.85rem;
+  text-transform:uppercase;letter-spacing:.04em;line-height:1.35}
+#menu-panel .mp-head p{font-size:.72rem;color:#bbb;margin-top:.4rem;font-style:italic}
+#menu-panel .mp-close{position:absolute;top:.8rem;right:1rem;background:transparent;
+  border:none;color:#fff;font-size:1.4rem;cursor:pointer}
+#menu-panel .mp-sec{padding:.9rem 1.2rem;border-bottom:1px solid var(--cinza)}
+#menu-panel .mp-sec h3{font-family:'Arial Black',sans-serif;font-size:.65rem;
+  letter-spacing:.08em;text-transform:uppercase;color:var(--roxo);margin-bottom:.5rem}
+#menu-panel .mp-sec p{font-size:.78rem;color:#444;line-height:1.5}
+.mp-nav-item{display:block;width:100%;text-align:left;background:#fff;border:1.5px solid var(--cinza);
+  border-radius:8px;padding:.65rem .8rem;margin-bottom:.5rem;font-family:Georgia,serif;
+  font-size:.85rem;cursor:pointer;color:var(--preto)}
+.mp-nav-item.atual{border-color:var(--roxo);background:#f4f2fa;font-weight:bold}
+.mp-nav-item:disabled{opacity:.4;cursor:not-allowed}
+.mp-restart{color:var(--vermelho);font-size:.78rem;text-align:center;display:block;
+  width:100%;margin-top:.3rem;background:none;border:none;cursor:pointer;text-decoration:underline}
+
 /* FOOTER */
 footer{background:var(--preto);color:rgba(255,255,255,.4);
   text-align:center;padding:1.6rem 1.1rem;font-size:.73rem;line-height:1.7}
@@ -289,10 +316,34 @@ footer strong{color:rgba(255,255,255,.72)}
   </div>
 </div>
 
+<!-- MENU HAMBURGER -->
+<div id="menu-overlay" onclick="if(event.target===this)fecharMenu()">
+  <div id="menu-panel">
+    <div class="mp-head">
+      <button class="mp-close" onclick="fecharMenu()" aria-label="Fechar">&times;</button>
+      <h2>Quando a Piada Não É Engraçada</h2>
+      <p>Narrativas, leitura multissemiótica e violência simbólica de gênero</p>
+    </div>
+    <div class="mp-sec">
+      <h3>Sobre o ODA</h3>
+      <p>Objeto Digital de Aprendizagem produzido para a disciplina Multimodalidade no Ensino de Línguas e Literaturas, ministrada pela Prof.ª Dr.ª Fabiana Diniz Kurtz — Unijuí, 2026.</p>
+      <p style="margin-top:.5rem">Autoria: Amanda Vieira, Cátia Sparenberger, Jaqueline Koller, Mariele Ribeiro, Tatiana Bueno e Vanilson Cardoso.</p>
+    </div>
+    <div class="mp-sec">
+      <h3>Retomar o percurso</h3>
+      <div id="menu-nav"></div>
+    </div>
+    <div class="mp-sec" style="border-bottom:none">
+      <button class="mp-restart" onclick="fecharMenu();recomecarDoZero();">Recomeçar do zero</button>
+    </div>
+  </div>
+</div>
+
 <!-- TOP BAR -->
 <div class="top-bar">
   <span class="oda-nome">Quando a Piada Não É Engraçada</span>
   <div style="display:flex;align-items:center;gap:.6rem">
+    <button class="btn-menu" onclick="abrirMenu()" aria-label="Menu">☰</button>
     <div class="steps" id="steps-bar">
       <div class="step atual" id="st0">ID</div>
       <div class="step" id="st1">1</div>
@@ -337,7 +388,7 @@ footer strong{color:rgba(255,255,255,.72)}
   </div>
   <footer>
     <strong>Multimodalidade no Ensino de Línguas e Literaturas</strong><br>
-    Prof.ª Fabiana Diniz Kurtz · Unijuí · 2026 · Vers. 2.1<br>
+    Prof.ª Fabiana Diniz Kurtz · Unijuí · 2026<br>
     Amanda Vieira · Cátia Sparenberger · Jaqueline Koller · Mariele Ribeiro · Tatiana Bueno · Vanilson Cardoso
   </footer>
 </div>
@@ -663,7 +714,7 @@ footer strong{color:rgba(255,255,255,.72)}
   </div>
   <footer>
     <strong>Quando a Piada Não É Engraçada</strong><br>
-    Multimodalidade no Ensino de Línguas e Literaturas · Vers. 2.1 · Prof.ª Fabiana Diniz Kurtz · Unijuí · 2026
+    Multimodalidade no Ensino de Línguas e Literaturas · Prof.ª Fabiana Diniz Kurtz · Unijuí · 2026
   </footer>
 </div>
 
@@ -1021,7 +1072,7 @@ async function atualizarListaDuplas(){
   if(sel) sel.innerHTML='<option value="">Buscando duplas publicadas...</option>';
   if(msg) msg.textContent='';
   try{
-    const {data,error}=await SUPA.from('versoes').select('*').neq('dupla',dupla).order('created_at',{ascending:false}).limit(60);
+    const {data,error}=await SUPA.from('versoes').select('*').neq('dupla',dupla).limit(60);
     if(error) throw error;
     outrasDuplas = data||[];
     if(!sel) return;
@@ -1039,6 +1090,7 @@ async function atualizarListaDuplas(){
       if(btnComp) btnComp.disabled=false;
     }
   }catch(e){
+    console.warn('Erro ao buscar duplas publicadas:', e);
     if(sel) sel.innerHTML='<option value="">Não foi possível carregar</option>';
     if(msg) msg.textContent='Não foi possível buscar as duplas agora. Toquem em "Atualizar lista" para tentar de novo.';
     if(btnComp) btnComp.disabled=true;
@@ -1099,6 +1151,35 @@ async function finalizar() {
 // ── PROFESSOR — MODAL ──
 function abrirModal(){document.getElementById('modal-senha').classList.add('vis');setTimeout(()=>document.getElementById('senha-input').focus(),100);}
 function fecharModal(){document.getElementById('modal-senha').classList.remove('vis');document.getElementById('senha-input').value='';document.getElementById('modal-erro').textContent='';}
+
+// ── MENU HAMBURGER ──
+const TELAS_NAV = [
+  [1,'Momento 1 · O texto sem vestimentas'],
+  [2,'Momento 2 · Construindo a narrativa'],
+  [3,'Versão apresentável da dupla'],
+  [4,'Momento 3 · A troca e o confronto'],
+  [5,'Momento 4 · Nomear para resistir']
+];
+function montarMenuNav(){
+  const wrap = document.getElementById('menu-nav');
+  if(!wrap) return;
+  wrap.innerHTML = TELAS_NAV.map(([n,label])=>{
+    const alcancada = TELA_ATUAL >= n;
+    const atual = TELA_ATUAL === n ? ' atual' : '';
+    return `<button class="mp-nav-item${atual}" ${alcancada?'':'disabled'} onclick="irMenu(${n})">${label}</button>`;
+  }).join('');
+}
+function irMenu(n){
+  fecharMenu();
+  ir(n);
+}
+function abrirMenu(){
+  montarMenuNav();
+  document.getElementById('menu-overlay').classList.add('vis');
+}
+function fecharMenu(){
+  document.getElementById('menu-overlay').classList.remove('vis');
+}
 function verificarSenha(){
   const s=document.getElementById('senha-input').value;
   if(s===SENHA_PROF){fecharModal();ir('prof');pCarregar();setInterval(pCarregar,30000);}
@@ -1173,10 +1254,12 @@ const LABS={
 };
 
 async function pCarregar() {
-  const [{data:v},{data:r}]=await Promise.all([
-    SUPA.from('versoes').select('*').order('created_at',{ascending:false}),
+  const [{data:v,error:ev},{data:r,error:er}]=await Promise.all([
+    SUPA.from('versoes').select('*'),
     SUPA.from('respostas').select('*').order('criado_em',{ascending:false})
   ]);
+  if(ev) console.warn('Erro ao buscar versoes:', ev);
+  if(er) console.warn('Erro ao buscar respostas:', er);
   pVersoes=v||[]; pRespostas=r||[];
   const duplas=new Set([...pVersoes.map(x=>x.dupla),...pRespostas.map(x=>x.dupla)]);
   document.getElementById('pn-v').textContent=pVersoes.length;
